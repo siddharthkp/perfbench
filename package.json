@@ -5,14 +5,30 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "test": "node index https://example.com"
+    "test": "node index https://example.com",
+    "precommit": "lint-staged"
   },
-  "keywords": ["benchmark", "application", "metrics"],
+  "keywords": [
+    "benchmark",
+    "application",
+    "metrics"
+  ],
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
     "cli-table2": "0.2.0",
     "colors": "1.1.2",
     "lighthouse": "1.6.3"
+  },
+  "devDependencies": {
+    "husky": "0.13.3",
+    "lint-staged": "3.4.0",
+    "prettier": "1.2.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
