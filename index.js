@@ -10,7 +10,7 @@ const results = []
 
 const run = () => {
   runs = runs - 1
-  const wut = lighthouse.run(url)
+  lighthouse.run(url)
   .then(result => {
     results.push(result)
     if (runs > 0) setTimeout(run, WAIT_BETWEEN_RUNS)
