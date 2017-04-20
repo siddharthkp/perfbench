@@ -1,0 +1,460 @@
+{
+  "lighthouseVersion": "1.6.3",
+  "generatedTime": "2017-04-20T11:17:47.016Z",
+  "initialUrl": "https://www.practo.com/tests/bangalore/pregnancy-test-stick-random-urine",
+  "url": "https://www.practo.com/tests/bangalore/pregnancy-test-stick-random-urine",
+  "audits": {
+    "first-meaningful-paint": {
+      "score": 52,
+      "displayValue": "3892.2ms",
+      "rawValue": 3892.2,
+      "optimalValue": "1,600ms",
+      "extendedInfo": {
+        "value": {
+          "timestamps": {
+            "navStart": 17792594079,
+            "fCP": 17794792290,
+            "fMP": 17796486232
+          },
+          "timings": {
+            "navStart": 0,
+            "fCP": 2198.211,
+            "fMP": 3892.153
+          }
+        },
+        "formatter": "null"
+      },
+      "name": "first-meaningful-paint",
+      "category": "Performance",
+      "description": "First meaningful paint",
+      "helpText": "First meaningful paint measures when the primary content of a page is visible. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/first-meaningful-paint)."
+    },
+    "speed-index-metric": {
+      "score": 18,
+      "displayValue": "10569",
+      "rawValue": 10569,
+      "optimalValue": "1,250",
+      "extendedInfo": {
+        "formatter": "speedline",
+        "value": {
+          "timings": {
+            "firstVisualChange": 2336,
+            "visuallyComplete": 11148,
+            "speedIndex": 10972.417849997617,
+            "perceptualSpeedIndex": 10569.103989511119
+          },
+          "timestamps": {
+            "firstVisualChange": 17794922324,
+            "visuallyComplete": 17803734324,
+            "speedIndex": 17803558741.85,
+            "perceptualSpeedIndex": 17803155427.989513
+          },
+          "frames": [
+            {
+              "timestamp": 17792586.324,
+              "progress": 0
+            },
+            {
+              "timestamp": 17794922.596,
+              "progress": 4.632249349660438
+            },
+            {
+              "timestamp": 17795126.564,
+              "progress": 4.638469205268419
+            },
+            {
+              "timestamp": 17795142.727,
+              "progress": 4.639162153739748
+            },
+            {
+              "timestamp": 17795159.005,
+              "progress": 4.639162153739748
+            },
+            {
+              "timestamp": 17795175.597,
+              "progress": 4.6383741780565035
+            },
+            {
+              "timestamp": 17795192.217,
+              "progress": 4.638587482913058
+            },
+            {
+              "timestamp": 17795210.542,
+              "progress": 4.637244992051461
+            },
+            {
+              "timestamp": 17795225.995,
+              "progress": 4.637244992051461
+            },
+            {
+              "timestamp": 17795243.533,
+              "progress": 4.637953967463672
+            },
+            {
+              "timestamp": 17795259.447,
+              "progress": 4.6370528900459895
+            },
+            {
+              "timestamp": 17795275.711,
+              "progress": 4.636640133487143
+            },
+            {
+              "timestamp": 17795292.433,
+              "progress": 4.636618346846205
+            },
+            {
+              "timestamp": 17795309.134,
+              "progress": 4.636011510211239
+            },
+            {
+              "timestamp": 17795325.872,
+              "progress": 4.636011510211239
+            },
+            {
+              "timestamp": 17795359.179,
+              "progress": 4.636618346846205
+            },
+            {
+              "timestamp": 17795375.957,
+              "progress": 4.636618346846205
+            },
+            {
+              "timestamp": 17795392.592,
+              "progress": 4.636527245341333
+            },
+            {
+              "timestamp": 17795409.451,
+              "progress": 4.637116350915429
+            },
+            {
+              "timestamp": 17795426.061,
+              "progress": 4.636885746263546
+            },
+            {
+              "timestamp": 17795442.423,
+              "progress": 4.638401735049216
+            },
+            {
+              "timestamp": 17795459.172,
+              "progress": 4.6335601902197
+            },
+            {
+              "timestamp": 17795475.751,
+              "progress": 4.635364693172085
+            },
+            {
+              "timestamp": 17795493.111,
+              "progress": 4.6398566089640445
+            },
+            {
+              "timestamp": 17795509.452,
+              "progress": 4.638880754657769
+            },
+            {
+              "timestamp": 17795526.141,
+              "progress": 4.637390129200676
+            },
+            {
+              "timestamp": 17795543.42,
+              "progress": 4.638401735049216
+            },
+            {
+              "timestamp": 17795559.622,
+              "progress": 4.638392666163962
+            },
+            {
+              "timestamp": 17795575.855,
+              "progress": 4.637996589584445
+            },
+            {
+              "timestamp": 17795592.921,
+              "progress": 4.63732150328746
+            },
+            {
+              "timestamp": 17795609.26,
+              "progress": 4.637440730119833
+            },
+            {
+              "timestamp": 17795628.902,
+              "progress": 4.63732150328746
+            },
+            {
+              "timestamp": 17795643.117,
+              "progress": 4.63732150328746
+            },
+            {
+              "timestamp": 17795661.901,
+              "progress": 4.6379907697333005
+            },
+            {
+              "timestamp": 17795675.243,
+              "progress": 4.581219930990162
+            },
+            {
+              "timestamp": 17795690.956,
+              "progress": 4.580643695618719
+            },
+            {
+              "timestamp": 17795711.454,
+              "progress": 4.577274207347641
+            },
+            {
+              "timestamp": 17795729.208,
+              "progress": 4.576147537400308
+            },
+            {
+              "timestamp": 17795744.569,
+              "progress": 4.577795075216585
+            },
+            {
+              "timestamp": 17795761.263,
+              "progress": 4.578494761805252
+            },
+            {
+              "timestamp": 17795779.165,
+              "progress": 4.578494761805252
+            },
+            {
+              "timestamp": 17795796.153,
+              "progress": 4.578494761805252
+            },
+            {
+              "timestamp": 17795812.536,
+              "progress": 4.574407482535909
+            },
+            {
+              "timestamp": 17795827.969,
+              "progress": 4.577221331204453
+            },
+            {
+              "timestamp": 17795845.406,
+              "progress": 4.577010120031013
+            },
+            {
+              "timestamp": 17795861.113,
+              "progress": 4.576269619845564
+            },
+            {
+              "timestamp": 17795885.176,
+              "progress": 4.57558772301686
+            },
+            {
+              "timestamp": 17795901.519,
+              "progress": 4.575993357688476
+            },
+            {
+              "timestamp": 17795915.508,
+              "progress": 4.575993357688476
+            },
+            {
+              "timestamp": 17796498.284,
+              "progress": 6.179595809749249
+            },
+            {
+              "timestamp": 17796746.562,
+              "progress": 6.111114320815328
+            },
+            {
+              "timestamp": 17802215.577,
+              "progress": 6.111114320815328
+            },
+            {
+              "timestamp": 17802222.034,
+              "progress": 10.013069352260459
+            },
+            {
+              "timestamp": 17802249.022,
+              "progress": 10.015132176729548
+            },
+            {
+              "timestamp": 17802267.02,
+              "progress": 10.016492849422198
+            },
+            {
+              "timestamp": 17802282.475,
+              "progress": 10.017086329389011
+            },
+            {
+              "timestamp": 17802299.472,
+              "progress": 10.016891902669332
+            },
+            {
+              "timestamp": 17802316.071,
+              "progress": 10.017006942727388
+            },
+            {
+              "timestamp": 17802332.541,
+              "progress": 10.017058225941424
+            },
+            {
+              "timestamp": 17802818.936,
+              "progress": 10.246347440889462
+            },
+            {
+              "timestamp": 17803584.603,
+              "progress": 12.126349602182376
+            },
+            {
+              "timestamp": 17803734.343,
+              "progress": 100
+            }
+          ]
+        }
+      },
+      "name": "speed-index-metric",
+      "category": "Performance",
+      "description": "Perceptual Speed Index",
+      "helpText": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/speed-index)."
+    },
+    "time-to-interactive": {
+      "score": 8,
+      "displayValue": "11140.3ms",
+      "rawValue": 11140.3,
+      "optimalValue": "5,000ms",
+      "extendedInfo": {
+        "value": {
+          "timings": {
+            "fMP": 3892.2,
+            "visuallyReady": 11140.264,
+            "timeToInteractive": 11140.264
+          },
+          "timestamps": {
+            "fMP": 17796486232,
+            "visuallyReady": 17803734343,
+            "timeToInteractive": 17803734343
+          },
+          "expectedLatencyAtTTI": 26.834,
+          "foundLatencies": [
+            {
+              "estLatency": 26.834000000000003,
+              "startTime": "11140.3"
+            }
+          ]
+        },
+        "formatter": "null"
+      },
+      "name": "time-to-interactive",
+      "category": "Performance",
+      "description": "Time To Interactive (alpha)",
+      "helpText": "Time to Interactive identifies the time at which your app appears to be ready enough to interact with. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/time-to-interactive)."
+    },
+    "total-byte-weight": {
+      "score": 100,
+      "displayValue": "Total size was 649 KB",
+      "rawValue": 665062,
+      "optimalValue": "1,600 KB",
+      "extendedInfo": {
+        "formatter": "table",
+        "value": {
+          "results": [
+            {
+              "url": "…dist/main.fc52823….bundle.js",
+              "totalBytes": 158755,
+              "totalKb": "155 KB",
+              "totalMs": "1,670ms"
+            },
+            {
+              "url": "…dist/CityTestListingPage.9011acf….bundle.js",
+              "totalBytes": 120354,
+              "totalKb": "118 KB",
+              "totalMs": "1,270ms"
+            },
+            {
+              "url": "…dist/vendor.d87444f….bundle.js",
+              "totalBytes": 63479,
+              "totalKb": "62 KB",
+              "totalMs": "670ms"
+            },
+            {
+              "url": "…v6/practicon.woff2",
+              "totalBytes": 49882,
+              "totalKb": "49 KB",
+              "totalMs": "530ms"
+            },
+            {
+              "url": "…camphor/677b110e-fe2c-4af7-b50b-3e8f00c371ce.woff2",
+              "totalBytes": 37494,
+              "totalKb": "37 KB",
+              "totalMs": "400ms"
+            },
+            {
+              "url": "…camphor/c96be38e-ea64-418f-ae54-e757ed92b069.woff2",
+              "totalBytes": 37452,
+              "totalKb": "37 KB",
+              "totalMs": "390ms"
+            },
+            {
+              "url": "…bangalore/pregnancy-test-stick-random-urine",
+              "totalBytes": 30671,
+              "totalKb": "30 KB",
+              "totalMs": "320ms"
+            },
+            {
+              "url": "…dist/main.fc52823….css",
+              "totalBytes": 30141,
+              "totalKb": "29 KB",
+              "totalMs": "320ms"
+            },
+            {
+              "url": "…js/practonav.js",
+              "totalBytes": 18651,
+              "totalKb": "18 KB",
+              "totalMs": "200ms"
+            },
+            {
+              "url": "/nr-spa-974.min.js",
+              "totalBytes": 12354,
+              "totalKb": "12 KB",
+              "totalMs": "130ms"
+            }
+          ],
+          "tableHeadings": {
+            "url": "URL",
+            "totalKb": "Total Size",
+            "totalMs": "Transfer Time"
+          }
+        }
+      },
+      "informative": true,
+      "name": "total-byte-weight",
+      "category": "Network",
+      "description": "Avoids enormous network payloads",
+      "helpText": "Network transfer size [costs users real dollars](https://whatdoesmysitecost.com/) and is [highly correlated](http://httparchive.org/interesting.php#onLoad) with long load times. Try to find ways to reduce the size of required files."
+    },
+    "user-timings": {
+      "score": true,
+      "displayValue": "0",
+      "rawValue": true,
+      "extendedInfo": {
+        "formatter": "userTimings",
+        "value": []
+      },
+      "informative": true,
+      "name": "user-timings",
+      "category": "Performance",
+      "description": "User Timing marks and measures",
+      "helpText": "Consider instrumenting your app with the User Timing API to create custom, real-world measurements of key user experiences. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/user-timing)."
+    }
+  },
+  "runtimeConfig": {
+    "environment": [
+      {
+        "name": "Device Emulation",
+        "enabled": false,
+        "description": "Nexus 5X"
+      },
+      {
+        "name": "Network Throttling",
+        "enabled": true,
+        "description": "150ms RTT, 0.7Mbps down, 0.2Mbps up"
+      },
+      {
+        "name": "CPU Throttling",
+        "enabled": true,
+        "description": "5x slowdown"
+      }
+    ],
+    "blockedUrlPatterns": []
+  },
+  "aggregations": []
+}
