@@ -9,7 +9,7 @@ const run = (url) => new Promise((resolve, reject) => {
   const launcher = new chrome({port: 9222, autoSelectChrome: true})
 
   return launcher.isDebuggerReady()
-  .catch(error => {
+  .catch(err => {
     if (err) reject(err)
     else launcher.run() // Launch Chrome
   })
