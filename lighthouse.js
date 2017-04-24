@@ -10,7 +10,7 @@ const run = (url) => new Promise((resolve, reject) => {
 
   return launcher.isDebuggerReady()
   .catch(error => {
-    if (error) throw error
+    if (err) reject(err)
     else launcher.run() // Launch Chrome
   })
   .then(() => lighthouse(url, flags, config)) // Run Lighthouse
