@@ -4,7 +4,7 @@ const chrome = require("lighthouse/lighthouse-cli/chrome-launcher.js")
 const throttle = require("./throttle-lighthouse");
 
 const config = require("./config.json");
-const flags = { disableCpuThrottling: false, disableDeviceEmulation: true };
+const flags = { disableCpuThrottling: false };
 
 const run = url =>
   new Promise((resolve, reject) => {
