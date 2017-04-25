@@ -6,7 +6,7 @@ const config = require('./config.json')
 const flags = {disableCpuThrottling: false, disableDeviceEmulation: true}
 
 const run = (url) => new Promise((resolve, reject) => {
-  const launcher = new chrome({port: 9222, autoSelectChrome: true})
+  const launcher = new chrome({port: 9222})
 
   return launcher.isDebuggerReady()
   .catch(err => {
