@@ -15,7 +15,10 @@ const run = (url) => new Promise((resolve, reject) => {
     results.artifacts = undefined // Disable artifacts
     resolve(results)
   })
-  .catch(err => launcher.kill().then(() => reject(err))) // Kill Chrome if there's an error.
+  .catch(err => {
+    console.log(err)
+    launcher.kill().then(() => reject(err))
+  }) // Kill Chrome if there's an error.
 })
 
 module.exports = {run, throttle}

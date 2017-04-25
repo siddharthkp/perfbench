@@ -2,7 +2,7 @@ const lighthouse = require('./lighthouse')
 const reporter = require('./reporter')
 
 const WAIT_BETWEEN_RUNS = 2500
-const NUMBER_OF_RUNS = 3
+const NUMBER_OF_RUNS = 1
 
 const url = process.argv[2]
 
@@ -19,6 +19,6 @@ const run = () => {
   .catch(err => {throw err})
 }
 
-let runs = 3
+let runs = NUMBER_OF_RUNS
 lighthouse.throttle()
 run()
