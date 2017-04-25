@@ -22,6 +22,8 @@ const print = results => {
 
   const keys = Object.keys(results[0].audits);
 
+  let fail = false;
+
   for (let key of keys) {
     const property = results[0].audits[key].description;
     const optimal = optimalValues[key];
@@ -39,7 +41,10 @@ const print = results => {
 
     let color;
     if (value < optimal) color = green;
-    else color = red;
+    else {
+      color = red;
+      fail = true;
+    }
 
     table.push([
       color(property),
@@ -50,6 +55,8 @@ const print = results => {
 
   //if (key === 'user-timings') console.log(result.extendedInfo)
   console.log(table.toString());
+
+  if (fail) process.exit(1);
 };
 
 module.exports = { print };
