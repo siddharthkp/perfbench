@@ -9,10 +9,6 @@ const run = (url) => new Promise((resolve, reject) => {
   const launcher = new chrome({port: 9222})
 
   return launcher.isDebuggerReady()
-  .catch(err => {
-    if (err) reject(err)
-    else launcher.run() // Launch Chrome
-  })
   .then(() => lighthouse(url, flags, config)) // Run Lighthouse
   .then(results => launcher.kill().then(() => results)) // Kill Chrome and return results
   .then(results => {
