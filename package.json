@@ -18,7 +18,8 @@
   "dependencies": {
     "cli-table2": "0.2.0",
     "colors": "1.1.2",
-    "lighthouse": "1.6.3"
+    "lighthouse": "1.6.3",
+    "sync-exec": "0.6.2"
   },
   "devDependencies": {
     "husky": "0.13.3",
