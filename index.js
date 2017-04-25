@@ -22,6 +22,6 @@ const run = () => {
     });
 };
 
-let runs = 3;
+let runs = NUMBER_OF_RUNS;
 lighthouse.throttle();
 run();
