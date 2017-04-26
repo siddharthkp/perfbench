@@ -1,14 +1,17 @@
 const syncExec = require('sync-exec')
 
+process.env.DISPLAY = ':99.0'
+process.env.LIGHTHOUSE_CHROMIUM_PATH = `${process.cwd()}/chrome-linux/chrome`
+
 const commands = [
-  'export DISPLAY=:99.0',
-  'export LIGHTHOUSE_CHROMIUM_PATH="$(pwd)/chrome-linux/chrome"',
   'sh -e /etc/init.d/xvfb start',
   './node_modules/lighthouse/lighthouse-core/scripts/download-chrome.sh'
 ]
 
 const setup = () => {
   console.log('Setting up Chrome')
+  console.log(process.env.DISPLAY)
+  console.log(process.env.LIGHTHOUSE_CHROMIUM_PATH)
   for (let command of commands) {
     console.log(command)
     const output = syncExec(command, { stdio: [0, 1, 2] })
