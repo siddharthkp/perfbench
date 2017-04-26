@@ -10,6 +10,7 @@ const commands = [
 const setup = () => {
   console.log('Setting up Chrome')
   for (let command of commands) {
+    console.log(command)
     const output = syncExec(command, { stdio: [0, 1, 2] })
     if (output.stderr) {
       console.log(output.stderr)
