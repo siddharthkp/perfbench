@@ -1,8 +1,10 @@
 const syncExec = require("sync-exec");
 const throttle = require("./throttle-lighthouse");
 
-const config = require("./config.json");
 const flags = { disableCpuThrottling: false };
+
+let configPath = "./node_modules/perfbench/src/config.json";
+if (process.env.test) configPath = "./src/config.json";
 
 const run = url =>
   new Promise((resolve, reject) => {
@@ -11,7 +13,7 @@ const run = url =>
       url,
       "--output=json",
       "--disable-cpu-throttling=false",
-      "--config-path=./node_modules/perfbench/src/config.json"
+      "--config-path=" + configPath
     ].join(" ");
 
     const output = syncExec(command);
