@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "test": "node --trace-warnings index https://example.com",
+    "test": "node --trace-warnings index.js https://example.com",
     "precommit": "lint-staged"
   },
   "keywords": [

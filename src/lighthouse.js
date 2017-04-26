@@ -11,7 +11,7 @@ const run = url =>
       url,
       "--output=json",
       "--disable-cpu-throttling=false",
-      "--config-path=./config.json"
+      "--config-path=./node_modules/perfbench/src/config.json"
     ].join(" ");
 
     const output = syncExec(command);

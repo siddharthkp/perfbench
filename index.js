@@ -1,5 +1,7 @@
-const lighthouse = require("./lighthouse");
-const reporter = require("./reporter");
+#!/usr/bin/env node
+
+const lighthouse = require("./src/lighthouse");
+const reporter = require("./src/reporter");
 
 const WAIT_BETWEEN_RUNS = 2500;
 const NUMBER_OF_RUNS = 3;
