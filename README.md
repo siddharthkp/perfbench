@@ -16,6 +16,7 @@
 npm install perfbench --save
 ```
 
+&nbsp;
 
 #### use with CI (powered by lighthouse)
 
