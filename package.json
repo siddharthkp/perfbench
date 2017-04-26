@@ -13,6 +13,10 @@
     "application",
     "metrics"
   ],
+  "files": [
+    "index.js",
+    "src"
+  ],
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
