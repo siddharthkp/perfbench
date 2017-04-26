@@ -2,6 +2,7 @@ const fs = require('fs')
 const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
 const { optimalValues, units } = require('./properties')
+const argv = require('yargs-parser')(process.argv.slice(2))
 
 let table = new Table({
   head: [white('Property'), white('Average'), white('Optimal')]
@@ -56,7 +57,7 @@ const print = results => {
   //if (key === 'user-timings') console.log(result.extendedInfo)
   console.log(table.toString())
 
-  if (fail) process.exit(1)
+  if (fail && !argv.onlyWarn) process.exit(1)
 }
 
 module.exports = { print }

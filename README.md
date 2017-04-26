@@ -37,6 +37,12 @@ or `package.json`
 
 &nbsp;
 
+#### cli options
+
+- `--only-warn`: Show results without failing CI build
+
+&nbsp;
+
 #### metrics measured
 
 - First meaningful paint (1600 ms threshold)
@@ -62,8 +68,8 @@ or `package.json`
 
 #### todo
 
-- only warn
 - custom threshold
+- check standard deviation
 
 &nbsp;
 
