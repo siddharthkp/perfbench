@@ -10,11 +10,8 @@ const commands = [
 
 const setup = () => {
   console.log('Setting up Chrome')
-  console.log(process.env.DISPLAY)
-  console.log(process.env.LIGHTHOUSE_CHROMIUM_PATH)
   for (let command of commands) {
-    console.log(command)
-    const output = syncExec(command, { stdio: [0, 1, 2] })
+    const output = syncExec(command)
     if (output.stderr) {
       console.log(output.stderr)
       process.exit(1)
