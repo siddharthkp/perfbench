@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const setup = require('./src/setup')
 const lighthouse = require('./src/lighthouse')
 const reporter = require('./src/reporter')
 
@@ -25,5 +26,7 @@ const run = () => {
 }
 
 let runs = NUMBER_OF_RUNS
+
+if (process.env.CI) setup()
 lighthouse.throttle()
 run()
