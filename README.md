@@ -18,21 +18,23 @@ npm install perfbench --save
 
 &nbsp;
 
+#### usage
+
+Add to your `package.json`
+
+```json
+"scripts": {
+  "test": "perfbench http://localhost:3000
+}
+```
+
 #### use with CI (powered by lighthouse)
 
 Add this line in your `.travis.yml`
 
 ```yaml
 scripts:
-  - perfbench https://example.com
-```
-
-or `package.json`
-
-```json
-"scripts": {
-  "test": "perfbench https://example.com"
-}
+  - perfbench http://localhost:3000
 ```
 
 &nbsp;
