@@ -3,9 +3,10 @@
 const setup = require('./src/setup')
 const lighthouse = require('./src/lighthouse')
 const reporter = require('./src/reporter')
+const argv = require('yargs-parser')(process.argv.slice(2))
 
 const WAIT_BETWEEN_RUNS = 2500
-const NUMBER_OF_RUNS = 3
+const NUMBER_OF_RUNS = argv.runs || 3
 
 const url = process.argv[2]
 

@@ -41,7 +41,8 @@ scripts:
 
 #### cli options
 
-- `--only-warn`: Show results without failing CI build
+- `--only-warn`: Show results without failing CI build (default: false)
+- `--runs`: Number of runs (default: 3)
 
 &nbsp;
 
