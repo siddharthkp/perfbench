@@ -9,7 +9,7 @@ let table = new Table({
 })
 
 const print = results => {
-  if (process.env.debug)
+  if (argv.debug)
     fs.writeFileSync('./results.json', JSON.stringify(results, null, 2))
 
   console.log('Test conditions:')
