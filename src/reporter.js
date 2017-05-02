@@ -3,9 +3,15 @@ const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
 const { optimalValues, units } = require('./properties')
 const argv = require('yargs-parser')(process.argv.slice(2))
+const statistics = require('statistics')
 
 let table = new Table({
-  head: [white('Property'), white('Average'), white('Optimal')]
+  head: [
+    white('Property'),
+    white('Average'),
+    white('Optimal'),
+    white('Standard deviation')
+  ]
 })
 
 const print = results => {
@@ -29,15 +35,23 @@ const print = results => {
     const property = results[0].audits[key].description
     const optimal = optimalValues[key]
 
-    let sum = 0
+    if (argv.debug) console.log(property, optimal)
+
+    let values = []
 
     for (let i = 0; i < results.length; i++) {
-      const data = results[i].audits[key]
-      sum += data.rawValue
+      if (argv.debug) console.log(results[i].audits[key].rawValue)
+      values.push(results[i].audits[key].rawValue)
     }
 
-    if (key === 'total-byte-weight') sum = sum / 1024
+    let { sum, stdev } = values.reduce(statistics)
 
+    if (key === 'total-byte-weight') {
+      sum = sum / 1024
+      stdev = stdev / 1024
+    }
+
+    /* Take average of all values */
     const value = (sum / results.length).toFixed(2)
 
     let color
@@ -50,7 +64,8 @@ const print = results => {
     table.push([
       color(property),
       color(value + ' ' + units[key]),
-      color(optimal + ' ' + units[key])
+      color(optimal + ' ' + units[key]),
+      color(stdev.toFixed(0) + ' ' + units[key])
     ])
   }
 
