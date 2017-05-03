@@ -6,12 +6,7 @@ const argv = require('yargs-parser')(process.argv.slice(2))
 const statistics = require('statistics')
 
 let table = new Table({
-  head: [
-    white('Property'),
-    white('Average'),
-    white('Optimal'),
-    white('Standard deviation')
-  ]
+  head: [white('Property'), white('Average'), white('Optimal')]
 })
 
 const print = results => {
@@ -30,6 +25,7 @@ const print = results => {
   const keys = Object.keys(results[0].audits)
 
   let fail = false
+  let unreliableResults = []
 
   for (let key of keys) {
     const property = results[0].audits[key].description
@@ -52,10 +48,10 @@ const print = results => {
     }
 
     /* Take average of all values */
-    const value = (sum / results.length).toFixed(2)
+    const average = (sum / results.length).toFixed(2)
 
     let color
-    if (value < optimal) color = green
+    if (average < optimal) color = green
     else {
       color = red
       fail = true
@@ -63,15 +59,30 @@ const print = results => {
 
     table.push([
       color(property),
-      color(value + ' ' + units[key]),
-      color(optimal + ' ' + units[key]),
-      color(stdev.toFixed(0) + ' ' + units[key])
+      color(average + ' ' + units[key]),
+      color(optimal + ' ' + units[key])
     ])
+
+    /* if average crosses threshold by standard deviation, throw a warning */
+    if (average > optimal && average - stdev < optimal)
+      unreliableResults.push(`${property}: ${stdev.toFixed(2)} ${units[key]}`)
   }
 
-  //if (key === 'user-timings') console.log(result.extendedInfo)
+  // if (key === 'user-timings') console.log(result.extendedInfo)
   console.log(table.toString())
+  console.log()
 
+  /* warnings for unreliable results due to variation */
+  if (unreliableResults.length) {
+    console.log(
+      yellow('The following results are not reliable due to high variations:')
+    )
+    console.log()
+    console.log(unreliableResults.join('\n'))
+    console.log()
+  }
+
+  /* fail build if average > threshold */
   if (fail && !argv.onlyWarn) process.exit(1)
 }
 
