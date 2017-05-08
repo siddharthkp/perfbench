@@ -48,7 +48,10 @@ const print = results => {
     }
 
     /* Take average of all values */
-    const average = (sum / results.length).toFixed(2)
+    let numberOfDecimals = 2
+    if (key === 'speed-index-metric') numberOfDecimals = 0
+
+    const average = (sum / results.length).toFixed(numberOfDecimals)
 
     let color
     if (average < optimal) color = green
