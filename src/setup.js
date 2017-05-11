@@ -5,7 +5,7 @@ process.env.LIGHTHOUSE_CHROMIUM_PATH = `${process.cwd()}/chrome-linux/chrome`
 
 const commands = [
   'sh -e /etc/init.d/xvfb start',
-  './node_modules/lighthouse/lighthouse-core/scripts/download-chrome.sh'
+  'time ./node_modules/lighthouse/lighthouse-core/scripts/download-chrome.sh'
 ]
 
 const setup = () => {
