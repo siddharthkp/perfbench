@@ -4,8 +4,11 @@ process.env.DISPLAY = ':99.0'
 process.env.LIGHTHOUSE_CHROMIUM_PATH = `${process.cwd()}/chrome-linux/chrome`
 
 const commands = [
+  'date',
   'sh -e /etc/init.d/xvfb start',
-  'time ./node_modules/lighthouse/lighthouse-core/scripts/download-chrome.sh',
+  'date',
+  './node_modules/lighthouse/lighthouse-core/scripts/download-chrome.sh',
+  'date',
   'ls'
 ]
 
