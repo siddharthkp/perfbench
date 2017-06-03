@@ -3,7 +3,7 @@
 const setup = require('./src/setup')
 const lighthouse = require('./src/lighthouse')
 const reporter = require('./src/reporter')
-let { maxRuns, url } = require('./src/settings')
+let { runs, url } = require('./src/settings')
 
 const WAIT_BETWEEN_RUNS = 2500
 
@@ -22,8 +22,6 @@ const run = () => {
       throw err
     })
 }
-
-let runs = maxRuns
 
 if (process.env.CI) setup()
 lighthouse.throttle()
