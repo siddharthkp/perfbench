@@ -2,7 +2,7 @@ const fs = require('fs')
 const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
 const { optimalValues, units } = require('./properties')
-let { debug, fail } = require('./src/settings')
+let { debug, fail } = require('./settings')
 const statistics = require('statistics')
 
 let table = new Table({
