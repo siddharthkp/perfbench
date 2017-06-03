@@ -46,6 +46,17 @@ scripts:
 
 &nbsp;
 
+#### .perf.yml
+
+You can also drop a YAML file in the root of your repository for easier customization
+
+```yaml
+runs: 2
+fail: false
+```
+
+&nbsp;
+
 #### metrics measured
 
 - First meaningful paint (1600 ms threshold)
