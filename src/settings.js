@@ -4,7 +4,6 @@ const pkgDir = require('pkg-dir')
 const { resolve } = require('path')
 const { info, error } = require('prettycli')
 const yaml = require('js-yaml')
-const camelCase = require('lodash.camelCase')
 
 let settings = {}
 const properties = ['runs', 'fail', 'url', 'debug']
