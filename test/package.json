@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ../index https://example.com --only-warn"
+    "test": "node ../index"
   },
   "author": "siddharthkp",
   "license": "MIT",

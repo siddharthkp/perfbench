@@ -2,7 +2,7 @@ const fs = require('fs')
 const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
 const { optimalValues, units } = require('./properties')
-const argv = require('yargs-parser')(process.argv.slice(2))
+let { debug, fail } = require('./src/settings')
 const statistics = require('statistics')
 
 let table = new Table({
@@ -10,7 +10,7 @@ let table = new Table({
 })
 
 const print = results => {
-  if (argv.debug)
+  if (debug)
     fs.writeFileSync('./results.json', JSON.stringify(results, null, 2))
 
   console.log('Test conditions:')
@@ -24,19 +24,19 @@ const print = results => {
 
   const keys = Object.keys(results[0].audits)
 
-  let fail = false
+  let error = false
   let unreliableResults = []
 
   for (let key of keys) {
     const property = results[0].audits[key].description
     const optimal = optimalValues[key]
 
-    if (argv.debug) console.log(property, optimal)
+    if (debug) console.log(property, optimal)
 
     let values = []
 
     for (let i = 0; i < results.length; i++) {
-      if (argv.debug) console.log(results[i].audits[key].rawValue)
+      if (debug) console.log(results[i].audits[key].rawValue)
       values.push(results[i].audits[key].rawValue)
     }
 
@@ -57,7 +57,7 @@ const print = results => {
     if (average < optimal) color = green
     else {
       color = red
-      fail = true
+      error = true
     }
 
     table.push([
@@ -85,8 +85,8 @@ const print = results => {
     console.log()
   }
 
-  /* fail build if average > threshold */
-  if (fail && !argv.onlyWarn) process.exit(1)
+  /* error build if average > threshold */
+  if (error && fail) process.exit(1)
 }
 
 module.exports = { print }
