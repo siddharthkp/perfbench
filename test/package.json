@@ -1,0 +1,14 @@
+{
+  "name": "perfbench-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ../index https://example.com --only-warn"
+  },
+  "author": "siddharthkp",
+  "license": "MIT",
+  "dependencies": {
+    "perfbench": "^1.1.5"
+  }
+}
