@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - "node"
   - "6"
+script:
+  - cd test
+  - npm link ../
+  - npm t
 cache:
   directories:
     - node_modules

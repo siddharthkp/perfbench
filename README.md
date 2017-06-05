@@ -39,24 +39,6 @@ scripts:
 
 &nbsp;
 
-#### cli options
-
-- `--only-warn`: Show results without failing CI build (default: false)
-- `--runs`: Number of runs (default: 3)
-
-&nbsp;
-
-#### .perf.yml
-
-You can also drop a YAML file in the root of your repository for easier customization
-
-```yaml
-runs: 2
-fail: false
-```
-
-&nbsp;
-
 #### metrics measured
 
 - First meaningful paint (1600 ms threshold)
@@ -71,6 +53,22 @@ fail: false
 - Network: Regular 3G (750 Kbps)
 - Device emulation: Nexus 5X
 - CPU: 5x slowdown
+
+&nbsp;
+
+#### configuration
+
+You can also drop a YAML file `.perf.yml` in the root of your repository for easier customization
+
+```yaml
+runs: 2         # average of how many runs (default: 3)
+fail: false     # fail: true only throws a warning (default: true)
+thresholds:
+  - first-meaningful-paint: 2500  (default: 1600)
+  - speed-index-metric: 1500      (default: 1250)
+  - time-to-interactive: 3600     (default: 2500)
+  - total-byte-weight: 500        (default: 1600)
+```
 
 &nbsp;
 
