@@ -10,6 +10,5 @@ script:
 cache:
   directories:
     - node_modules
-    - test/node_modules
 notifications:
   email: false
