@@ -2,9 +2,16 @@
   "name": "test",
   "main": "index.js",
   "scripts": {
-    "test": "perfbench"
+    "setup": "pm2 start index.js",
+    "test": "run-s setup perfbench breakdown || run-s breakdown fail",
+    "perfbench": "perfbench",
+    "breakdown": "pm2 kill",
+    "fail": "exit 1"
   },
   "dependencies": {
-    "lighthouse": "1.6.3"
+    "lighthouse": "1.6.3",
+    "npm-run-all": "4.0.2",
+    "pm2": "2.4.6",
+    "serve": "5.2.1"
   }
 }
