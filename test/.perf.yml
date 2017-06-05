@@ -1,8 +1,3 @@
 runs: 2
 fail: false
 url: https://example.com
-thresholds:
-  - first-meaningful-paint: 1600
-  - speed-index-metric: 1250
-  - time-to-interactive: 2500
-  - total-byte-weight: 1600
