@@ -1,46 +1,60 @@
 const fs = require('fs')
 const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
+const statistics = require('statistics')
+const kebabcase = require('lodash.kebabcase')
+
 const { optimalValues, units } = require('./properties')
 let { debug, fail, thresholdSettings } = require('./settings')
-const statistics = require('statistics')
 
+/* Table headers */
 let table = new Table({
   head: [white('Property'), white('Average'), white('Threshold')]
 })
 
+let error = false
+let unreliableResults = []
+
 const print = results => {
-  if (debug)
-    fs.writeFileSync('./results.json', JSON.stringify(results, null, 2))
+  if (debug) fs.writeFileSync('./debug.json', JSON.stringify(results, null, 2))
 
-  console.log('Test conditions:')
-  console.log()
+  /* Print the test conditions */
+  console.log('Test conditions: \n')
   const conditions = results[0].runtimeConfig.environment
-  for (let condition of conditions) {
-    if (condition.enabled)
-      console.log(yellow(condition.name), yellow(condition.description))
+  for (let { enabled, name, description } of conditions) {
+    if (enabled) console.log(yellow(name), yellow(description))
   }
-  console.log()
 
+  /* Flatten user timings results */
+  for (let i = 0; i < results.length; i++) {
+    results[i].audits['user-timings'].extendedInfo.value.map(
+      audit =>
+        (results[i].audits[kebabcase(audit.name)] = {
+          description: audit.name,
+          rawValue: audit.startTime
+        })
+    )
+    delete results[i].audits['user-timings']
+  }
+
+  /* Get all the audit keys */
   const keys = Object.keys(results[0].audits)
 
-  let error = false
-  let unreliableResults = []
-
+  /* Merge defaults and settings to get thresholds */
   let thresholds = Object.assign({}, optimalValues, ...thresholdSettings)
+  if (debug) console.log('thresholds: ', thresholds)
 
   for (let key of keys) {
     const property = results[0].audits[key].description
-    const threshold = thresholds[key]
-
-    if (debug) console.log(property, threshold)
+    const threshold = thresholds[key] || 0
 
     let values = []
 
     for (let i = 0; i < results.length; i++) {
-      if (debug) console.log(results[i].audits[key].rawValue)
       values.push(results[i].audits[key].rawValue)
     }
+
+    if (debug) console.log(property, threshold, values)
 
     let { sum, stdev } = values.reduce(statistics)
 
@@ -64,16 +78,15 @@ const print = results => {
 
     table.push([
       color(property),
-      color(average + ' ' + units[key]),
-      color(threshold + ' ' + units[key])
+      color(average + ' ' + units(key)),
+      color(threshold + ' ' + units(key))
     ])
 
     /* if average crosses threshold by standard deviation, throw a warning */
     if (average > threshold && average - stdev < threshold)
-      unreliableResults.push(`${property}: ${stdev.toFixed(2)} ${units[key]}`)
+      unreliableResults.push(`${property}: ${stdev.toFixed(2)} ${units(key)}`)
   }
 
-  // if (key === 'user-timings') console.log(result.extendedInfo)
   console.log(table.toString())
   console.log()
 
