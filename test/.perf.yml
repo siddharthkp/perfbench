@@ -1,5 +1,5 @@
 runs: 2
 fail: false
-url: https://example.com
+url: http://localhost:3000/page.html
 thresholds:
   - time-to-interactive: 500
