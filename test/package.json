@@ -2,6 +2,6 @@
   "name": "test",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/perfbench"
+    "test": "perfbench"
   }
 }
