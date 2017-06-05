@@ -3,9 +3,13 @@ language: node_js
 node_js:
   - "node"
   - "6"
+script:
+  - cd test
+  - npm install
+  - npm link ../
+  - npm t
 cache:
   directories:
     - node_modules
-    - test/node_modules
 notifications:
   email: false

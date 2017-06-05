@@ -1,6 +1,10 @@
 {
-  "name": "perfbench-test",
+  "name": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "perfbench"
+  },
   "dependencies": {
-    "perfbench": "^1.1.5"
+    "lighthouse": "1.6.3"
   }
 }
