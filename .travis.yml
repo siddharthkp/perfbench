@@ -5,6 +5,7 @@ node_js:
   - "6"
 script:
   - cd test
+  - npm install
   - npm link ../
   - npm t
 cache:
