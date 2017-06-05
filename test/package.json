@@ -3,5 +3,8 @@
   "main": "index.js",
   "scripts": {
     "test": "perfbench"
+  },
+  "dependencies": {
+    "lighthouse": "1.6.3"
   }
 }
