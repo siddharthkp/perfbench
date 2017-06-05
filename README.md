@@ -58,16 +58,18 @@ scripts:
 
 #### configuration
 
-You can also drop a YAML file `.perf.yml` in the root of your repository for easier customization
+You can also drop a YAML file `.perf.yml` in the root of your repository for easier customisation.
+
+All fields are optional.
 
 ```yaml
-runs: 2         # average of how many runs (default: 3)
-fail: false     # fail: true only throws a warning (default: true)
-thresholds:
-  - first-meaningful-paint: 2500  (default: 1600)
-  - speed-index-metric: 1500      (default: 1250)
-  - time-to-interactive: 3600     (default: 2500)
-  - total-byte-weight: 500        (default: 1600)
+runs: 2         # average of how many runs (optional, default: 3)
+fail: false     # fail: true only throws a warning (optional, default: true)
+thresholds:     # build will fail if these thresholds are not met (optional, defaults:)
+  - first-meaningful-paint: 1600
+  - speed-index-metric: 1250
+  - time-to-interactive: 2500
+  - total-byte-weight: 1600
 ```
 
 &nbsp;
