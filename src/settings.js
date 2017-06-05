@@ -6,7 +6,7 @@ const { info, error } = require('prettycli')
 const yaml = require('js-yaml')
 
 let settings = {}
-const properties = ['runs', 'fail', 'url', 'debug']
+const properties = ['runs', 'fail', 'url', 'debug', 'thresholds']
 
 /*
   There are 3 layers of settings.
@@ -17,7 +17,7 @@ const properties = ['runs', 'fail', 'url', 'debug']
   3. cli params
 */
 
-const defaults = { runs: 3, fail: true, debug: false }
+const defaults = { runs: 3, fail: true, debug: false, thresholds: {} }
 let fileSettings = {}
 let cliParams = {}
 
@@ -48,5 +48,8 @@ for (let property of properties) {
   if (typeof settings[property] === 'undefined')
     error(`${property} is missing`, { silent: true })
 }
+
+settings.thresholdSettings = settings.thresholds
+delete settings.thresholds
 
 module.exports = settings

@@ -2,11 +2,11 @@ const fs = require('fs')
 const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
 const { optimalValues, units } = require('./properties')
-let { debug, fail } = require('./settings')
+let { debug, fail, thresholdSettings } = require('./settings')
 const statistics = require('statistics')
 
 let table = new Table({
-  head: [white('Property'), white('Average'), white('Optimal')]
+  head: [white('Property'), white('Average'), white('Threshold')]
 })
 
 const print = results => {
@@ -27,11 +27,13 @@ const print = results => {
   let error = false
   let unreliableResults = []
 
+  let thresholds = Object.assign({}, optimalValues, ...thresholdSettings)
+
   for (let key of keys) {
     const property = results[0].audits[key].description
-    const optimal = optimalValues[key]
+    const threshold = thresholds[key]
 
-    if (debug) console.log(property, optimal)
+    if (debug) console.log(property, threshold)
 
     let values = []
 
@@ -54,7 +56,7 @@ const print = results => {
     const average = (sum / results.length).toFixed(numberOfDecimals)
 
     let color
-    if (average < optimal) color = green
+    if (average < threshold) color = green
     else {
       color = red
       error = true
@@ -63,11 +65,11 @@ const print = results => {
     table.push([
       color(property),
       color(average + ' ' + units[key]),
-      color(optimal + ' ' + units[key])
+      color(threshold + ' ' + units[key])
     ])
 
     /* if average crosses threshold by standard deviation, throw a warning */
-    if (average > optimal && average - stdev < optimal)
+    if (average > threshold && average - stdev < threshold)
       unreliableResults.push(`${property}: ${stdev.toFixed(2)} ${units[key]}`)
   }
 
