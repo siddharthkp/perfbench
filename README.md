@@ -74,6 +74,24 @@ thresholds:     # build will fail if these thresholds are not met (optional, def
 
 &nbsp;
 
+#### custom properties
+
+You can also add custom properties.
+
+Send a user timing performance event from your javascript.
+```js
+performance.mark('Page ready')
+```
+
+And add the kebabcased key to `.perf.yml`
+
+```yaml
+thresholds:
+  - page-ready: 1500
+```
+
+&nbsp;
+
 #### like it?
 
 :star: this repo
