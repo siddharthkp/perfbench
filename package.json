@@ -5,7 +5,6 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "test": "cd test && node index",
     "precommit": "lint-staged"
   },
   "keywords": [
