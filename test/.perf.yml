@@ -3,3 +3,4 @@ fail: false
 url: http://localhost:3000/page.html
 thresholds:
   - time-to-interactive: 500
+  - page-ready: 1500
