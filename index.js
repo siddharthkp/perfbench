@@ -25,4 +25,3 @@ const run = () => {
 
 if (process.env.CI) setup()
 lighthouse.throttle()
-run()
