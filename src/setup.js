@@ -1,5 +1,7 @@
 const syncExec = require('sync-exec')
 const seleniumAssistant = require('selenium-assistant')
+const path = require('path')
+const spawn = require('child_process').spawn
 
 process.env.DISPLAY = ':99.0'
 
