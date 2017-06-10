@@ -59,7 +59,7 @@ class LighthouseWrapper {
   }
 
   _unixTmpDir() {
-    return execSync('mktemp -d -t lighthouse.XXXXXXX').toString().trim()
+    return syncExec('mktemp -d -t lighthouse.XXXXXXX').toString().trim()
   }
 }
 
