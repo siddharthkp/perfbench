@@ -23,22 +23,10 @@ const run = () => {
     })
 }
 
-try {
-  if (process.env.CI) setup()
-} catch (error) {
-  console.log('--------setup---------')
-  console.log(error)
-}
-try {
-  lighthouse.throttle()
-} catch (error) {
-  console.log('--------throttle---------')
-  console.log(error)
-}
+if (process.env.CI) setup().then(() => start())
+else start()
 
-try {
+start = () => {
+  lighthouse.throttle()
   run()
-} catch (error) {
-  console.log('--------run---------')
-  console.log(error)
 }
