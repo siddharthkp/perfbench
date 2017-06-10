@@ -1,6 +1,6 @@
 runs: 2
 fail: false
-url: http://example.com
+url: https://siddharthkp.github.io
 thresholds:
   - time-to-interactive: 500
   - page-ready: 1500
