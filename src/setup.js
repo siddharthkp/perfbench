@@ -58,7 +58,7 @@ const setup = () => {
       console.log(output.stderr)
       process.exit(1)
     }
-    downloadChrome().then(() => startChrome()).then(() => resolve())
+    downloadChrome().then(() => resolve())
   })
 }
 
