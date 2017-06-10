@@ -11,5 +11,3 @@ node_modules
 
 # OS specific files
 .DS_Store
-test/debug.json
-test/package-lock.json
