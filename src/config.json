@@ -4,10 +4,7 @@
     "recordTrace": true,
     "pauseBeforeTraceEndMs": 500,
     "useThrottling": true,
-    "gatherers": [
-      "url",
-      "content-width"
-    ]
+    "gatherers": ["url"]
   }],
 
   "audits": [
