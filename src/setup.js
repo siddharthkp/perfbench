@@ -9,6 +9,7 @@ const setup = () => {
   console.log('Setting up Chrome')
   for (let command of commands) {
     const output = syncExec(command)
+    console.log(output)
     if (output.stderr) {
       console.log(output.stderr)
       process.exit(1)
