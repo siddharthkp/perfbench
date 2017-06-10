@@ -29,5 +29,5 @@ const start = () => {
 }
 
 if (process.env.CI) {
-  setup().then(() => start()).catch(error => console.log('Setup failed', error))
+  setup().then(start).catch(error => console.log('Setup failed', error))
 } else start()
