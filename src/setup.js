@@ -3,10 +3,12 @@ const syncExec = require('sync-exec')
 const path = require('path')
 
 const setup = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     process.env.DISPLAY = ':99.0'
     const output = syncExec('sh -e /etc/init.d/xvfb start')
-    seleniumAssistant.downloadLocalBrowser('chrome', 'stable')
+    seleniumAssistant
+      .downloadLocalBrowser('chrome', 'stable')
+      .then(() => resolve())
   })
 }
 
