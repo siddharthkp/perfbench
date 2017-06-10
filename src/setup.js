@@ -77,7 +77,7 @@ const setup = () => {
       .downloadChrome()
       .then(() => wrapper.startChrome())
       .then(() => resolve())
-      .catch(erorr => reject(error))
+      .catch(error => reject(error))
   })
 }
 
