@@ -7,17 +7,22 @@ const data = {
   label: 'perfbench',
   description: 'Performance benchmarking'
 }
+console.log(data)
 
 const build = new Build(data)
+console.log(build)
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
 
 /* If github token is given */
 if (process.env.github_token) {
+  console.log('enhancing pass + fail')
   build.start()
   pass = () => build.pass()
   fail = () => build.fail()
 }
+
+console.log(pass)
 
 module.exports = { pass, fail }
