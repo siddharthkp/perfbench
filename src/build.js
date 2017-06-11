@@ -16,8 +16,8 @@ let fail = () => process.exit(1)
 /* If github token is given and we have commit sha */
 if (process.env.github_token && process.env.TRAVIS_PULL_REQUEST_SHA) {
   build.start()
-  pass = () => build.pass('Performance checks passed! 🚀')
-  fail = () => build.fail('Performance checks failed! 🐌')
+  pass = () => build.pass()
+  fail = () => build.fail()
 }
 
 module.exports = { pass, fail }
