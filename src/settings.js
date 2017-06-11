@@ -27,7 +27,7 @@ const configFileExists = fs.existsSync(configPath)
 
 /* file */
 if (configFileExists) {
-  info('CONFIG', 'Picking config from .perf.yml')
+  info('Perfbench', 'Picking config from .perf.yml')
   try {
     fileSettings = yaml.safeLoad(fs.readFileSync(configPath))
   } catch ({ message }) {
