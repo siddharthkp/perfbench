@@ -49,7 +49,7 @@ for (let property of properties) {
     error(`${property} is missing`, { silent: true })
 }
 
-settings.customSettings = settings.thresholds
+settings.customThresholds = Object.assign({}, ...settings.thresholds)
 delete settings.thresholds
 
 module.exports = settings
