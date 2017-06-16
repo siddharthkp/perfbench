@@ -4,7 +4,6 @@ const { white, yellow, green, red } = require('colors/safe')
 const statistics = require('statistics')
 const kebabcase = require('lodash.kebabcase')
 
-const build = require('./build')
 const { optimalValues, units } = require('./properties')
 let { debug, fail, thresholdSettings } = require('./settings')
 
@@ -102,8 +101,7 @@ const print = results => {
   }
 
   /* error build if average > threshold */
-  if (error && fail) build.fail()
-  else build.pass()
+  if (error && fail) process.exit(1)
 }
 
 module.exports = { print }
