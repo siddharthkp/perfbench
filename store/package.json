@@ -1,0 +1,14 @@
+{
+  "name": "perfbench-store",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "siddharthkp",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "express": "4.15.2",
+    "firebase": "4.1.2"
+  }
+}
