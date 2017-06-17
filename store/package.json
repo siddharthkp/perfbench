@@ -6,6 +6,13 @@
     "dev": "dev=true node index",
     "start": "node index"
   },
+  "now": {
+    "env": {
+      "apiKey": "@perfbench_apikey",
+      "databaseURL": "@perfbench_databaseurl"
+    },
+    "files": [ "index.js", "firebase.js" ]
+  },
   "keywords": [],
   "author": "siddharthkp",
   "license": "MIT",
