@@ -5,6 +5,10 @@ const { get, set } = require('./firebase')
 
 server.use(bodyParser.json())
 
+server.get('/status', (req, res) => {
+  res.status(200).end()
+})
+
 server.get('/values', (req, res) => {
   const { repo, token } = req.query
   if (!repo) res.status(400).end('repo missing')
