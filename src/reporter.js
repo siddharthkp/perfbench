@@ -5,8 +5,8 @@ const statistics = require('statistics')
 const kebabcase = require('lodash.kebabcase')
 
 const build = require('./build')
-const { optimalValues, units } = require('./properties')
-let { debug, fail, customThresholds } = require('./settings')
+const { units } = require('./properties')
+let { debug, fail, thresholds } = require('./settings')
 
 /* Table headers */
 let table = new Table({
@@ -40,10 +40,6 @@ const print = results => {
 
   /* Get all the audit keys */
   const keys = Object.keys(results[0].audits)
-
-  /* Merge defaults and settings to get thresholds */
-  let thresholds = Object.assign({}, optimalValues, customThresholds)
-  if (debug) console.log('thresholds: ', thresholds)
 
   for (let key of keys) {
     const property = results[0].audits[key].description

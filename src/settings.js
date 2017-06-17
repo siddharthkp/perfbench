@@ -4,6 +4,7 @@ const pkgDir = require('pkg-dir')
 const { resolve } = require('path')
 const { info, error } = require('prettycli')
 const yaml = require('js-yaml')
+const { optimalValues } = require('./properties')
 
 let settings = {}
 const properties = ['runs', 'fail', 'url', 'debug', 'thresholds']
@@ -49,9 +50,10 @@ for (let property of properties) {
     error(`${property} is missing`, { silent: true })
 }
 
-if (Array.isArray(settings.thresholds)) {
-  settings.customThresholds = Object.assign({}, ...settings.thresholds)
-}
-delete settings.thresholds
+if (!Array.isArray(settings.thresholds)) settings.thresholds = []
+
+/* Merge defaults and settings to get thresholds */
+settings.thresholds = Object.assign({}, optimalValues, ...settings.thresholds)
+if (settings.debug) console.log('setting: ', settings)
 
 module.exports = settings
