@@ -11,4 +11,4 @@ node_modules
 
 # OS specific files
 .DS_Store
-store/config.json
+store/.env

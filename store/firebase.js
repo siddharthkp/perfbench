@@ -1,7 +1,12 @@
 const firebase = require('firebase')
-const config = require('./config.json')
 
-firebase.initializeApp(config)
+if (process.env.dev) {
+  require('dotenv').config()
+}
+
+const { apiKey, databaseURL } = process.env
+
+firebase.initializeApp({ apiKey, databaseURL })
 
 const database = firebase.database()
 
