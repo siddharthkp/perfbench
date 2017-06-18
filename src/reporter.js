@@ -114,6 +114,9 @@ const print = results => {
     console.log()
   }
 
+  /* Check travis branch */
+  console.log(process.env.TRAVIS_BRANCH)
+
   /* error build if average > threshold */
   if (error && fail) build.fail(values)
   else build.pass(values)
