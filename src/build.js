@@ -19,11 +19,12 @@ if (token && sha) {
   build.start()
 
   pass = values => {
+    /* default message */
+    let message = 'Performance checks passed!'
+
     if (store.enabled) {
       const master = store.get()
-
       let properties = []
-      let message
 
       const keys = ['time-to-interactive', 'first-meaningful-paint']
       let increased = false
@@ -35,18 +36,17 @@ if (token && sha) {
         }
       }
 
-      console.log(increased)
-
       if (increased) {
         const key = increased
-        message = `${startcase(key)} has increased by ${values[key] - master[key]} ${units(key)}`
+        const difference = parseInt(values[key] - master[key], 10)
+        message = `${startcase(key)} has increased by ${difference} ${units(key)}`
       } else {
         const key = keys[0]
-        message = `${startcase(key)} has improved by ${master[key] - values[key]} ${units(key)}`
+        const difference = parseInt(master[key] - values[key], 10)
+        message = `${startcase(key)} has improved by ${difference} ${units(key)}`
       }
-
-      console.log(message)
     }
+
     build.pass(message)
   }
 
