@@ -37,10 +37,10 @@ if (token && sha) {
 
       if (increased) {
         const key = increased
-        message = `${startcase(key)} has increased by ${values[key] - threshold[key]} ${units(key)}`
+        message = `${startcase(key)} has increased by ${values[key] - master[key]} ${units(key)}`
       } else {
         const key = keys[0]
-        message = `${startcase(key)} has improved by ${threshold[key] - values[key]} ${units(key)}`
+        message = `${startcase(key)} has improved by ${master[key] - values[key]} ${units(key)}`
       }
     }
     build.pass('Performance checks passed!')
@@ -57,7 +57,7 @@ if (token && sha) {
 
     if (properties.length === 1) {
       const key = properties[0]
-      message = `${startcase(key)} is above threshold (${values[key]} > ${threshold[key]})`
+      message = `${startcase(key)} is above threshold (${values[key]} > ${thresholds[key]})`
     } else {
       message = `${properties
         .map(p => startcase(p))
