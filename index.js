@@ -4,6 +4,7 @@ const setup = require('./src/setup')
 const lighthouse = require('./src/lighthouse')
 const reporter = require('./src/reporter')
 let { runs, url } = require('./src/settings')
+const build = require('./src/build')
 
 const WAIT_BETWEEN_RUNS = 2500
 
@@ -30,6 +31,7 @@ const start = () => {
 
 process.on('unhandledRejection', function(reason, p) {
   console.log('Unhandled Promise: ', p, ' reason: ', reason)
+  build.error()
 })
 
 if (process.env.CI) {

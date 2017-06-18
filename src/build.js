@@ -13,6 +13,7 @@ const build = new Build(meta)
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
+let error = () => {} // noop
 
 /* If github token is given and we have commit sha */
 if (token && sha) {
@@ -68,6 +69,8 @@ if (token && sha) {
 
     build.fail(message)
   }
+
+  error = () => build.error()
 }
 
-module.exports = { pass, fail }
+module.exports = { pass, fail, error }
