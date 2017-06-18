@@ -5,8 +5,8 @@ const { units } = require('./properties')
 const { repo, sha, token } = require('./travis')
 
 const label = 'perfbench'
-const message = 'Running performance tests...'
-const meta = { repo, sha, token, label, message }
+const description = 'Running performance tests...'
+const meta = { repo, sha, token, label, description }
 
 const build = new Build(meta)
 
@@ -28,7 +28,7 @@ if (token && sha) {
 
     if (properties.length === 1) {
       const key = properties[0]
-      message = `${startcase(key)} is above threshold (${thresholds[key]} ${units(key)})`
+      message = `${startcase(key)} is above threshold: ${thresholds[key]} ${units(key)}`
     } else {
       message = `${properties
         .map(p => startcase(p))
