@@ -37,8 +37,11 @@ if (token && sha) {
       }
 
       const key = increased || keys[0]
+      const starter = increased ? 'Warning:' : 'Good job!'
+      const verb = increased ? 'increased' : 'improved'
       const difference = Math.round(Math.abs(values[key] - master[key]))
-      message = `${startcase(key)} has ${increased ? 'increased' : 'improved'} by ${difference} ${units(key)}`
+
+      message = `${starter} ${startcase(key)} has ${verb} by ${difference} ${units(key)}`
     }
 
     build.pass(message)
