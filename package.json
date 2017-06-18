@@ -6,7 +6,7 @@
   "bin": "index.js",
   "scripts": {
     "precommit": "lint-staged",
-    "test": "test=true TRAVIS_REPO_SLUG=siddharthkp/perfbench-test github_token=d01dfe0879a6517e6724df7880c4daa8dbd33b74 node index"
+    "test": "test=true node index"
   },
   "keywords": [
     "benchmark",
