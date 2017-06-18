@@ -8,6 +8,7 @@ const build = require('./build')
 const { units } = require('./properties')
 let { debug, fail, thresholds } = require('./settings')
 const store = require('./api')
+const { branch } = require('./travis')
 
 /* Table headers */
 let head = [white('Property'), white('Values'), white('Threshold')]
@@ -114,8 +115,7 @@ const print = results => {
     console.log()
   }
 
-  /* Check travis branch */
-  console.log(process.env.TRAVIS_BRANCH)
+  if (branch === 'master') store.set(values)
 
   /* error build if average > threshold */
   if (error && fail) build.fail(values)

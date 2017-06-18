@@ -1,8 +1,6 @@
 const axios = require('axios')
 const url = 'https://perfbench-store.now.sh/values'
-
-const repo = process.env.TRAVIS_REPO_SLUG
-const token = process.env.github_token
+const { repo, token } = require('./travis')
 
 let enabled = false
 let values = {}
@@ -17,7 +15,11 @@ if (repo && token) {
 
 const get = () => values
 
-const set = values => {}
+const set = values => {
+  if (repo && token) {
+    axios.post(url, { repo, token, values }).catch(error => console.log(error))
+  }
+}
 
 const store = { enabled, set, get }
 module.exports = store
