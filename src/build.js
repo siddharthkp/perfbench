@@ -28,7 +28,7 @@ if (token && sha) {
 
     if (properties.length === 1) {
       const key = properties[0]
-      message = `${startcase(key)} is above threshold: ${thresholds[key]} ${units(key)}`
+      message = `${startcase(key)} is above threshold (${values[key]} > ${threshold[key]})`
     } else {
       message = `${properties
         .map(p => startcase(p))
