@@ -88,7 +88,10 @@ const print = results => {
       color(average + ' ' + units(key)),
       color(threshold + ' ' + units(key))
     ]
-    if (store.enabled) row.splice(2, 0, color(master[key] + ' ' + units(key)))
+    if (store.enabled) {
+      const value = master[key] + ' ' + units(key)
+      row.splice(2, 0, color(value) || null)
+    }
 
     table.push(row)
 
