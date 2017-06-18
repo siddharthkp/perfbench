@@ -89,8 +89,9 @@ const print = results => {
       color(threshold + ' ' + units(key))
     ]
     if (store.enabled) {
-      const value = master[key] + ' ' + units(key)
-      row.splice(2, 0, color(value) || null)
+      let value = ''
+      if (master[key]) value = master[key] + ' ' + units(key)
+      row.splice(2, 0, color(value))
     }
 
     table.push(row)
