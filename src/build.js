@@ -43,7 +43,7 @@ if (token && sha) {
         message = `${startcase(key)} has improved by ${master[key] - values[key]} ${units(key)}`
       }
     }
-    build.pass('Performance checks passed!')
+    build.pass(message)
   }
 
   fail = values => {
