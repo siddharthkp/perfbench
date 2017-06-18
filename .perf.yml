@@ -1,4 +1,5 @@
 runs: 2
+fail: false
 url: https://siddharthkp.github.io
 thresholds:
   - time-to-interactive: 500
