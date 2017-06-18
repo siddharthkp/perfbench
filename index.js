@@ -28,6 +28,10 @@ const start = () => {
   run()
 }
 
+process.on('unhandledRejection', function(reason, p) {
+  console.log('Unhandled Promise: ', p, ' reason: ', reason)
+})
+
 if (process.env.CI) {
   setup().then(start).catch(error => console.log('Setup failed', error))
 } else start()
