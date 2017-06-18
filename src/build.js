@@ -35,6 +35,8 @@ if (token && sha) {
         }
       }
 
+      console.log(increased)
+
       if (increased) {
         const key = increased
         message = `${startcase(key)} has increased by ${values[key] - master[key]} ${units(key)}`
@@ -42,6 +44,8 @@ if (token && sha) {
         const key = keys[0]
         message = `${startcase(key)} has improved by ${master[key] - values[key]} ${units(key)}`
       }
+
+      console.log(message)
     }
     build.pass(message)
   }
