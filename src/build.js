@@ -36,15 +36,9 @@ if (token && sha) {
         }
       }
 
-      if (increased) {
-        const key = increased
-        const difference = parseInt(values[key] - master[key], 10)
-        message = `${startcase(key)} has increased by ${difference} ${units(key)}`
-      } else {
-        const key = keys[0]
-        const difference = parseInt(master[key] - values[key], 10)
-        message = `${startcase(key)} has improved by ${difference} ${units(key)}`
-      }
+      const key = increased || keys[0]
+      const difference = Math.round(Math.abs(values[key] - master[key]))
+      message = `${startcase(key)} has ${increased ? 'increased' : 'improved'} by ${difference} ${units(key)}`
     }
 
     build.pass(message)
