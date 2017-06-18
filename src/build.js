@@ -1,4 +1,5 @@
 const Build = require('github-build')
+let { thresholds } = require('./settings')
 
 const data = {
   repo: process.env.TRAVIS_REPO_SLUG,
@@ -16,8 +17,8 @@ let fail = () => process.exit(1)
 /* If github token is given and we have commit sha */
 if (process.env.github_token && process.env.TRAVIS_PULL_REQUEST_SHA) {
   build.start()
-  pass = () => build.pass('Performance checks passed!')
-  fail = () => build.fail('Performance checks failed!')
+  pass = values => build.pass('Performance checks passed!')
+  fail = values => build.fail('Performance checks failed!')
 }
 
 module.exports = { pass, fail }
