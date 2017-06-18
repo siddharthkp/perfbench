@@ -9,7 +9,7 @@ const units = property => {
   return (
     {
       'first-meaningful-paint': 'ms',
-      'speed-index-metric': '',
+      'speed-index-metric': ' ',
       'time-to-interactive': 'ms',
       'total-byte-weight': 'Kb'
     }[property] || 'ms'
