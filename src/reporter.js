@@ -7,17 +7,28 @@ const kebabcase = require('lodash.kebabcase')
 const build = require('./build')
 const { units } = require('./properties')
 let { debug, fail, thresholds } = require('./settings')
+const store = require('./api')
 
 /* Table headers */
-let table = new Table({
-  head: [white('Property'), white('Average'), white('Threshold')]
-})
+let head = [white('Property'), white('Values'), white('Threshold')]
+let table = new Table({ head })
 
 let error = false
 let unreliableResults = []
+let master = {}
 
 const print = results => {
   if (debug) fs.writeFileSync('./debug.json', JSON.stringify(results, null, 2))
+
+  /*
+    If store is enabled
+    1. fetch values from api
+    2. add column in table header
+  */
+  if (store.enabled) {
+    table.options.head.splice(2, 0, white('Master'))
+    master = store.get()
+  }
 
   /* Print the test conditions */
   console.log('Test conditions: \n')
@@ -72,11 +83,18 @@ const print = results => {
       error = true
     }
 
-    table.push([
+    const row = [
       color(property),
       color(average + ' ' + units(key)),
       color(threshold + ' ' + units(key))
-    ])
+    ]
+    if (store.enabled) {
+      let value = ''
+      if (master[key]) value = master[key] + ' ' + units(key)
+      row.splice(2, 0, color(value))
+    }
+
+    table.push(row)
 
     /* if average crosses threshold by standard deviation, throw a warning */
     if (average > threshold && average - stdev < threshold)
