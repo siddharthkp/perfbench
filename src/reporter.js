@@ -8,6 +8,7 @@ const build = require('./build')
 const { units } = require('./properties')
 let { debug, fail, thresholds } = require('./settings')
 const store = require('./api')
+const { branch } = require('./travis')
 
 /* Table headers */
 let head = [white('Property'), white('Values'), white('Threshold')]
@@ -113,6 +114,8 @@ const print = results => {
     console.log(unreliableResults.join('\n'))
     console.log()
   }
+
+  if (branch === 'master') store.set(values)
 
   /* error build if average > threshold */
   if (error && fail) build.fail(values)
