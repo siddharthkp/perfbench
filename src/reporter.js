@@ -15,6 +15,7 @@ let head = [white('Property'), white('Values'), white('Threshold')]
 let table = new Table({ head })
 
 let error = false
+let averageValues = {}
 let unreliableResults = []
 let master = {}
 
@@ -95,6 +96,7 @@ const print = results => {
       row.splice(2, 0, color(value))
     }
 
+    averageValues[key] = average
     table.push(row)
 
     /* if average crosses threshold by standard deviation, throw a warning */
@@ -115,11 +117,11 @@ const print = results => {
     console.log()
   }
 
-  if (branch === 'master') store.set(values)
+  if (branch === 'master') store.set(averageValues)
 
   /* error build if average > threshold */
-  if (error && fail) build.fail(values)
-  else build.pass(values)
+  if (error && fail) build.fail(averageValues)
+  else build.pass(averageValues)
 }
 
 module.exports = { print }
