@@ -24,10 +24,13 @@ if (token && sha) {
     let message = 'Performance checks passed!'
 
     if (store.enabled) {
-      const master = store.get()
+      const keys = ['time-to-interactive', 'first-meaningful-paint']
       let properties = []
 
-      const keys = ['time-to-interactive', 'first-meaningful-paint']
+      const master = store.get()
+      /* Check that master is not an empty object */
+      if (!Object.keys(master).length) return
+
       let increased = false
 
       for (let key of keys) {
@@ -37,6 +40,7 @@ if (token && sha) {
         }
       }
 
+      /* If it did not increase, must have improved */
       const key = increased || keys[0]
       const starter = increased ? 'Warning:' : 'Good job!'
       const verb = increased ? 'increased' : 'improved'
