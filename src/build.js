@@ -24,13 +24,12 @@ if (token && sha) {
     let message = 'Performance checks passed!'
 
     if (store.enabled) {
+      const master = store.get()
+      /* If master values are empty, send default message */
+      if (!Object.keys(master).length) build.pass(message)
+
       const keys = ['time-to-interactive', 'first-meaningful-paint']
       let properties = []
-
-      const master = store.get()
-      /* Check that master is not an empty object */
-      if (!Object.keys(master).length) return
-
       let increased = false
 
       for (let key of keys) {
