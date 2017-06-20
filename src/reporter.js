@@ -53,12 +53,12 @@ const print = results => {
 
   /* Get all the audit keys */
   const keys = Object.keys(results[0].audits)
-  let values = []
 
   for (let key of keys) {
     const property = results[0].audits[key].description
     const threshold = thresholds[key] || 0
 
+    let values = []
     for (let i = 0; i < results.length; i++) {
       values.push(results[i].audits[key].rawValue)
     }
