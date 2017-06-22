@@ -120,7 +120,7 @@ const print = results => {
   if (branch === 'master') store.set(averageValues)
 
   /* error build if average > threshold */
-  if (error && fail) build.fail(averageValues)
+  if (error && fail) build.fail(averageValues, unreliableResults)
   else build.pass(averageValues)
 }
 
