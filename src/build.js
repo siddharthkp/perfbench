@@ -13,7 +13,7 @@ const build = new Build(meta)
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
-let error = () => {} // noop
+let error = () => process.exit(1)
 
 /* If github token is given and we have commit sha */
 if (token && sha) {
