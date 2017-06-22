@@ -51,7 +51,7 @@ if (token && sha) {
     build.pass(message)
   }
 
-  fail = values => {
+  fail = (values, unreliableResults) => {
     let properties = []
     let message
 
@@ -68,6 +68,10 @@ if (token && sha) {
         .map(p => startcase(p))
         .join(', ')
         .replace(/,([^,]*)$/, ' and$1')} are above threshold`
+    }
+
+    if (unreliableResults.length) {
+      message = `Results for ${unreliableResults.join(', ')} are not reliable due to high variations`
     }
 
     build.fail(message)
