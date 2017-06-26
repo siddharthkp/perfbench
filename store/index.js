@@ -13,7 +13,13 @@ server.get('/values', (req, res) => {
   const { repo, token } = req.query
   if (!repo) res.status(400).end('repo missing')
   else if (!token) res.status(401).end('token missing')
-  else get(repo, token).then(values => res.end(JSON.stringify(values)))
+  else {
+    get(repo, token).then(response => {
+      /* Firebase returns a list */
+      const values = Object.values(response)[0]
+      res.end(JSON.stringify(values))
+    })
+  }
 })
 
 server.post('/values', (req, res) => {

@@ -8,6 +8,9 @@
     "precommit": "lint-staged",
     "test": "test=true node index"
   },
+  "engines": {
+    "node": "8.x.x"
+  },
   "keywords": [
     "benchmark",
     "application",
