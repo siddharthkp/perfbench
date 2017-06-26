@@ -21,7 +21,7 @@ if (token && sha) {
 
   pass = values => {
     /* default message */
-    let message = 'Performance checks passed!'
+    let message = 'Good Job! Performance checks passed!'
 
     if (store.enabled) {
       const master = store.get()
@@ -45,7 +45,13 @@ if (token && sha) {
       const verb = increased ? 'increased' : 'improved'
       const difference = Math.round(Math.abs(values[key] - master[key]))
 
-      message = `${starter} ${startcase(key)} has ${verb} by ${difference} ${units(key)}`
+      /*
+        Show diff in build if it is at least 100ms,
+        anything below that is not reliable
+      */
+      if (difference >= 100) {
+        message = `${starter} ${startcase(key)} has ${verb} by ${difference} ${units(key)}`
+      }
     }
 
     build.pass(message)
