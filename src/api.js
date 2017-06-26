@@ -1,6 +1,6 @@
 const axios = require('axios')
 const url = 'https://perfbench-store.now.sh/values'
-const { repo, token } = require('./travis')
+const { repo, token, sha } = require('./travis')
 
 let enabled = false
 let values = {}
@@ -17,7 +17,9 @@ const get = () => values
 
 const set = values => {
   if (repo && token) {
-    axios.post(url, { repo, token, values }).catch(error => console.log(error))
+    axios
+      .post(url, { repo, token, sha, values })
+      .catch(error => console.log(error))
   }
 }
 
