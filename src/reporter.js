@@ -101,7 +101,7 @@ const print = results => {
 
     /* if average crosses threshold by standard deviation, throw a warning */
     if (average > threshold && average - stdev < threshold)
-      unreliableResults.push(`${property}: ${stdev.toFixed(2)} ${units(key)}`)
+      unreliableResults.push(`${property}: ± ${stdev.toFixed(2)} ${units(key)}`)
   }
 
   console.log(table.toString())
