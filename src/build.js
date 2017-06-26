@@ -20,7 +20,7 @@ if (token && event_type === 'pull_request') {
 
   pass = values => {
     /* default message */
-    let message = 'Good Job! Performance checks passed ±!'
+    let message = 'Good Job! Performance checks passed!'
 
     if (store.enabled) {
       const master = store.get()
