@@ -33,7 +33,7 @@ if (token && sha) {
       let increased = false
 
       for (let key of keys) {
-        if (values[key] > master[key]) {
+        if (values[key] > parseFloat(master[key])) {
           increased = key
           break
         }
