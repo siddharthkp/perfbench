@@ -2,7 +2,7 @@ const Build = require('github-build')
 const startcase = require('lodash.startcase')
 const { thresholds } = require('./settings')
 const { units } = require('./properties')
-const { repo, sha, token } = require('./travis')
+const { repo, sha, token, event_type } = require('./travis')
 const store = require('./api')
 
 const label = 'perfbench'
@@ -15,8 +15,7 @@ let pass = () => {} // noop
 let fail = () => process.exit(1)
 let error = () => process.exit(1)
 
-/* If github token is given and we have commit sha */
-if (token && sha) {
+if (token && event_type === 'pull_request') {
   build.start()
 
   pass = values => {
