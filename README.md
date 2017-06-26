@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/siddharthkp/perfbench/master/logo.png" height="200px"/>
   <br><br>
-  <b>Performance benchmarks for websites</b>
+  <b>Continuous integration for performance monitoring</b>
   <br>
 </p>
 
@@ -28,7 +28,7 @@ Add to your `package.json`
 }
 ```
 
-#### use with CI (powered by lighthouse)
+#### use with CI
 
 Add this line in your `.travis.yml`
 
@@ -100,8 +100,7 @@ thresholds:
 
 #### todo
 
-- custom threshold
-- check standard deviation
+- support multiple urls
 
 &nbsp;
 
