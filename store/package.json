@@ -6,6 +6,9 @@
     "dev": "dev=true node index",
     "start": "node index"
   },
+  "engines": {
+    "node": "8.x.x"
+  },
   "now": {
     "env": {
       "apiKey": "@perfbench_apikey",
