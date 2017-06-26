@@ -82,7 +82,9 @@ if (token && event_type === 'pull_request') {
     build.fail(message)
   }
 
-  error = () => build.error()
+  error = () => {
+    build.error('Tests errored out! Check pull request build for errors')
+  }
 }
 
 module.exports = { pass, fail, error }
