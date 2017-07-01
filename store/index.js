@@ -6,7 +6,7 @@ const { get, set } = require('./firebase')
 server.use(bodyParser.json())
 
 server.get('/status', (req, res) => {
-  res.status(200).end()
+  res.status(200).end('OK')
 })
 
 server.get('/values', (req, res) => {
@@ -29,6 +29,10 @@ server.post('/values', (req, res) => {
     set(repo, sha, values, token)
     res.status(200).end()
   }
+})
+
+server.get('/', (req, res) => {
+  res.redirect('/status')
 })
 
 server.listen(3001)
