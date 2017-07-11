@@ -16,7 +16,7 @@
     "application",
     "metrics"
   ],
-  "repository": "siddharth/perfbench",
+  "repository": "siddharthkp/perfbench",
   "files": [
     "index.js",
     "src"
