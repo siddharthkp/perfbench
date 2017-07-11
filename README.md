@@ -24,7 +24,7 @@ Add to your `package.json`
 
 ```json
 "scripts": {
-  "test": "perfbench http://localhost:3000
+  "test": "perfbench http://localhost:3000"
 }
 ```
 
