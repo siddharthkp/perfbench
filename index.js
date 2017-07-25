@@ -3,7 +3,7 @@
 const setup = require('./src/setup')
 const lighthouse = require('./src/lighthouse')
 const reporter = require('./src/reporter')
-let { runs, url, event_type } = require('./src/settings')
+let settings, { runs, url } = require('./src/settings')
 const build = require('./src/build')
 const { event } = require('ci-env')
 const { warn } = require('prettycli')
@@ -37,7 +37,7 @@ process.on('unhandledRejection', function(reason, p) {
 })
 
 if (process.env.CI) {
-  if (event === 'pull_request' && event_type !== 'pull_request') {
+  if (event === 'pull_request' && settings.event !== 'pull_request') {
     warn(
       `perfbench does not run on travis:pull_request
 

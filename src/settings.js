@@ -23,7 +23,7 @@ const defaults = {
   fail: true,
   debug: false,
   thresholds: {},
-  event_type: 'push'
+  event: 'push'
 }
 let fileSettings = {}
 let cliParams = {}
