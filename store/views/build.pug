@@ -1,0 +1,38 @@
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  </head>
+  <body>
+    <img class="logo" src="https://raw.githubusercontent.com/siddharthkp/perfbench/master/logo.png"/>
+    <div class="card">
+      <div class="build-info">
+        <div>
+          <span class="big dark">#{commit_message}</span>
+          <span class="big light">##{sha}</span>
+        </div>
+        <div class="light">#{repo} : #{branch}</div>
+      </div>
+      <div class="metrics">
+        <div class="labels desktop">
+          <div class="light label name">NAME</div>
+          <div class="light label threshold"></div>
+          <div class="light label size">SIZE/THRESHOLD</div>
+          <div class="light label master">MASTER</div>
+        </div>
+        each metric in metrics
+          <div class="metric #{metric.class}">
+            <div class="name">#{metric.name}</div>
+            <div class="threshold">
+              <div class="bar first" style="width: #{metric.fillLength * 100 / metric.maxLength}%"></div>
+              <div class="bar length" style="background-color: #{metric.baseColor}"></div>
+            </div>
+            <div class="size light">#{metric.value}/#{metric.threshold} #{metric.unit}</div>
+            if metric.diff
+              <div class="master light"><span class="mobile">master</span> #{metric.diff} #{metric.unit}</div>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

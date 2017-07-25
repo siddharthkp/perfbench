@@ -14,7 +14,12 @@
       "apiKey": "@perfbench_apikey",
       "databaseURL": "@perfbench_databaseurl"
     },
-    "files": [ "index.js", "firebase.js" ]
+    "files": [
+      "index.js",
+      "firebase.js",
+      "views",
+      "static"
+    ]
   },
   "keywords": [],
   "author": "siddharthkp",
@@ -23,6 +28,8 @@
     "body-parser": "1.17.2",
     "dotenv": "4.0.0",
     "express": "4.15.2",
-    "firebase": "4.1.2"
+    "firebase": "4.1.2",
+    "lodash.lowercase": "4.3.0",
+    "pug": "2.0.0-rc.2"
   }
 }

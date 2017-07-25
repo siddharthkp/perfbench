@@ -20,7 +20,7 @@ let error = () => process.exit(1)
 if (token && event === 'pull_request') {
   build.start()
 
-  pass = values => {
+  pass = (values, url) => {
     /* default message */
     let message = 'Good Job! Performance checks passed!'
 
@@ -55,10 +55,10 @@ if (token && event === 'pull_request') {
       }
     }
 
-    build.pass(message)
+    build.pass(message, url)
   }
 
-  fail = (values, unreliableResults) => {
+  fail = (values, unreliableResults, url) => {
     let properties = []
     let message
 
@@ -81,7 +81,7 @@ if (token && event === 'pull_request') {
       message = `Results for ${unreliableResults.join(', ')} are not reliable due to high variations`
     }
 
-    build.fail(message)
+    build.fail(message, url)
   }
 
   error = () => {
