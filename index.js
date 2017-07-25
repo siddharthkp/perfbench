@@ -11,14 +11,13 @@ const { warn } = require('prettycli')
 const WAIT_BETWEEN_RUNS = 2500
 
 const results = []
+const runs = settings.runs
 
 const run = () => {
-  console.log('okay then')
-  runs = settings.runs - 1
+  runs = runs - 1
   lighthouse
     .run(settings.url)
     .then(result => {
-      console.log(result)
       results.push(result)
       if (runs > 0) setTimeout(run, WAIT_BETWEEN_RUNS)
       else reporter.print(results)
@@ -49,7 +48,5 @@ if (process.env.CI) {
        check configuration options: https://siddharthkp/perfbench#event
     `
     )
-  } else {
-    console.log('Nothing to do here')
   }
 } else start()
