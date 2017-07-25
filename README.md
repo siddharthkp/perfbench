@@ -11,7 +11,7 @@
 
 &nbsp;
 
-#### minimal setup
+#### install
 ```
 npm install perfbench --save
 ```
@@ -24,52 +24,41 @@ Add to your `package.json`
 
 ```json
 "scripts": {
-  "test": "perfbench http://localhost:3000"
+  "test": "perfbench"
 }
 ```
 
-#### use with CI
-
-Add this line in your `.travis.yml`
-
-```yaml
-scripts:
-  - perfbench http://localhost:3000
-```
-
-&nbsp;
-
 #### metrics measured
 
-- First meaningful paint (1600 ms threshold)
-- Speed index metric (1250)
-- Time to interactive (2500 ms)
-- Total byte weight (1600 Kb)
+- First meaningful paint
+- Speed index metric
+- Time to interactive
+- Total byte weight
 
 &nbsp;
 
 #### test conditions
 
-- Network: Regular 3G (750 Kbps)
+- Network: Fast 3G (150ms RTT, 1.6Mbps down, 0.7Mbps up)
 - Device emulation: Nexus 5X
 - CPU: 5x slowdown
 
 &nbsp;
 
-#### configuration
+#### setup
 
-You can also drop a YAML file `.perf.yml` in the root of your repository for easier customisation.
+1. configuration 
 
-All fields are optional.
+Drop a YAML file `.perf.yml` in the root of your repository.
 
 ```yaml
-runs: 2         # average of how many runs (optional, default: 3)
-fail: false     # fail: true only throws a warning (optional, default: true)
-thresholds:     # build will fail if these thresholds are not met (optional, defaults:)
-  - first-meaningful-paint: 1600
-  - speed-index-metric: 1250
-  - time-to-interactive: 2500
-  - total-byte-weight: 1600
+url: http://localhost:3000            # the url you want to test
+fail: false                           # optional, default: true. false will only show a warning
+thresholds:                           # all rows are optional. add to customize the threshold
+  - first-meaningful-paint: 1600      # optional, default: 1600, value in ms
+  - speed-index-metric: 1250          # optional, default: 1250
+  - time-to-interactive: 2500         # optional, default: 2500, value in ms
+  - total-byte-weight: 1600           # optional, default: 1600, value in Kb
 ```
 
 &nbsp;
@@ -93,13 +82,26 @@ thresholds:
 ##### event-type
 
 For travis users, if you would like to run perfbench in `pull_request` instead of `push`,
-set `event-type` in `.perf.yml`
+set `event-type: pull_request`
 
 ```yaml
 event-type: pull_request
 ```
 
 &nbsp;
+
+2) github token for status 
+
+![build status](https://raw.githubusercontent.com/siddharthkp/perfbench/master/build-status.png)
+
+Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](wercker.com), and [Drone](http://readme.drone.io/).
+
+- [Authorize `perfbench` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=5be3b09eacb8977c79e6), copy the generated token.
+
+- Add this token as `PERFBENCH_GITHUB_TOKEN` as environment parameter in your CIs project settings.
+
+(Ask me for help if you're stuck)
+
 
 #### like it?
 
