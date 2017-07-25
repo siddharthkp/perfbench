@@ -1,9 +1,10 @@
 const Build = require('github-build')
 const startcase = require('lodash.startcase')
+const { repo, sha, event_type } = require('ci-env')
+
 const { thresholds } = require('./settings')
 const { units } = require('./properties')
 const token = require('./token')
-const { repo, sha, event_type } = require('./travis')
 const store = require('./api')
 
 const label = 'perfbench'
