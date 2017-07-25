@@ -11,7 +11,7 @@ const { warn } = require('prettycli')
 const WAIT_BETWEEN_RUNS = 2500
 
 const results = []
-const runs = settings.runs
+let runs = settings.runs
 
 const run = () => {
   runs = runs - 1
