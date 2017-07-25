@@ -1,6 +1,6 @@
 const Build = require('github-build')
 const startcase = require('lodash.startcase')
-const { repo, sha, event_type } = require('ci-env')
+const { repo, sha, event } = require('ci-env')
 
 const { thresholds } = require('./settings')
 const { units } = require('./properties')
@@ -17,7 +17,7 @@ let pass = () => {} // noop
 let fail = () => process.exit(1)
 let error = () => process.exit(1)
 
-if (token && event_type === 'pull_request') {
+if (token && event === 'pull_request') {
   build.start()
 
   pass = values => {
