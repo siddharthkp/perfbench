@@ -3,7 +3,7 @@
 const setup = require('./src/setup')
 const lighthouse = require('./src/lighthouse')
 const reporter = require('./src/reporter')
-let settings, { runs, url } = require('./src/settings')
+let settings = require('./src/settings')
 const build = require('./src/build')
 const { event } = require('ci-env')
 const { warn } = require('prettycli')
@@ -13,9 +13,9 @@ const WAIT_BETWEEN_RUNS = 2500
 const results = []
 
 const run = () => {
-  runs = runs - 1
+  runs = settings.runs - 1
   lighthouse
-    .run(url)
+    .run(settings.url)
     .then(result => {
       results.push(result)
       if (runs > 0) setTimeout(run, WAIT_BETWEEN_RUNS)
