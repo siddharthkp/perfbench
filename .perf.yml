@@ -1,7 +1,6 @@
 runs: 2
 fail: false
 url: https://siddharthkp.github.io
-event: pull_request
 thresholds:
   - time-to-interactive: 500
   - page-ready: 1500
