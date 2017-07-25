@@ -3,7 +3,7 @@ const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
 const statistics = require('statistics')
 const kebabcase = require('lodash.kebabcase')
-const { branch } = require('ci-env')
+const { repo, branch, commit_message, sha } = require('ci-env')
 
 const build = require('./build')
 const { units } = require('./properties')
@@ -119,9 +119,15 @@ const print = results => {
 
   if (branch === 'master') store.set(averageValues)
 
+  /* prepare details page url */
+  const params = encodeURIComponent(
+    JSON.stringify({ averageValues, master, repo, branch, commit_message, sha })
+  )
+  const url = `https://perfbench-store.now.sh/build?info=${params}`
+
   /* error build if average > threshold */
-  if (error && fail) build.fail(averageValues, unreliableResults)
-  else build.pass(averageValues)
+  if (error && fail) build.fail(averageValues, unreliableResults, url)
+  else build.pass(averageValues, url)
 }
 
 module.exports = { print }
