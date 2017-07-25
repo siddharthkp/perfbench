@@ -5,7 +5,7 @@ const lighthouse = require('./src/lighthouse')
 const reporter = require('./src/reporter')
 let settings = require('./src/settings')
 const build = require('./src/build')
-const { event } = require('ci-env')
+const { event, branch } = require('ci-env')
 const { warn } = require('prettycli')
 
 const WAIT_BETWEEN_RUNS = 2500
@@ -37,7 +37,7 @@ process.on('unhandledRejection', function(reason, p) {
 })
 
 if (process.env.CI) {
-  if (event === settings.event) {
+  if (branch === 'master' || event === settings.event) {
     setup().then(start).catch(error => console.log('Setup failed', error))
   } else if (event === 'pull_request') {
     warn(
