@@ -1,9 +1,12 @@
 const express = require('express')
 const server = express()
+const lowercase = require('lodash.lowercase')
 const bodyParser = require('body-parser')
 const { get, set } = require('./firebase')
 
 server.use(bodyParser.json())
+server.set('view engine', 'pug')
+server.use(express.static('static'))
 
 server.get('/status', (req, res) => {
   res.status(200).end('OK')
@@ -29,6 +32,51 @@ server.post('/values', (req, res) => {
     set(repo, sha, values, token)
     res.status(200).end()
   }
+})
+
+server.get('/build', (req, res) => {
+  let { info } = req.query
+  info = JSON.parse(info)
+
+  const data = {
+    repo: info.repo,
+    branch: info.branch,
+    sha: info.sha.slice(0, 8),
+    commit_message: info.commit_message || '',
+    metrics: []
+  }
+
+  const keys = Object.keys(info.averageValues)
+  keys.map(key => {
+    const name = lowercase(key)
+    const value = info.averageValues[key]
+    const threshold = info.thresholds[key]
+
+    const values = { name, value, threshold }
+
+    if (key != 'speed-index-metric') values.unit = 'ms'
+
+    if (info.master && info.master[key]) {
+      let diff = (value - info.master[key]).toFixed(0)
+      if (diff >= 0) diff = `+${diff}`
+      values.diff = diff
+    }
+
+    /* Logic to draw bars */
+    values.maxLength = Math.max(value, threshold)
+    if (value < values.maxLength) {
+      values.fillLength = value
+      values.baseColor = '#EEE'
+    } else {
+      values.fillLength = threshold
+      values.baseColor = '#FA5E7C'
+      values.class = 'fail'
+    }
+
+    data.metrics.push(values)
+  })
+
+  res.render('build', data)
 })
 
 server.get('/', (req, res) => {
