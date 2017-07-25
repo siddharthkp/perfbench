@@ -17,7 +17,7 @@ let pass = () => {} // noop
 let fail = () => process.exit(1)
 let error = () => process.exit(1)
 
-if (token && event === 'pull_request') {
+if (token && event === 'push') {
   build.start()
 
   pass = (values, url) => {
