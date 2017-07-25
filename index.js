@@ -37,6 +37,7 @@ process.on('unhandledRejection', function(reason, p) {
 })
 
 if (process.env.CI) {
+  console.log(event, settings, event === settings.event)
   if (branch === 'master' || event === settings.event) {
     setup().then(start).catch(error => console.log('Setup failed', error))
   } else if (event === 'pull_request') {
