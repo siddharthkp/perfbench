@@ -37,7 +37,9 @@ process.on('unhandledRejection', function(reason, p) {
 })
 
 if (process.env.CI) {
-  if (event === 'pull_request' && settings.event !== 'pull_request') {
+  if (event === settings.event) {
+    setup().then(start).catch(error => console.log('Setup failed', error))
+  } else if (event === 'pull_request') {
     warn(
       `perfbench does not run on travis:pull_request
 
@@ -45,7 +47,7 @@ if (process.env.CI) {
        check configuration options: https://siddharthkp/perfbench#event
     `
     )
-  } else if (event === settings.event) {
-    setup().then(start).catch(error => console.log('Setup failed', error))
+  } else {
+    console.log('Nothing to do here')
   }
 } else start()
