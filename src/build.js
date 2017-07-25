@@ -85,7 +85,7 @@ if (token) {
   }
 
   error = () => {
-    build.error('Tests errored out! Check pull request build for errors')
+    build.error('Tests errored out! Check build logs for errors')
   }
 }
 
