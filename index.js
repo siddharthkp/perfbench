@@ -13,10 +13,12 @@ const WAIT_BETWEEN_RUNS = 2500
 const results = []
 
 const run = () => {
+  console.log('okay then')
   runs = settings.runs - 1
   lighthouse
     .run(settings.url)
     .then(result => {
+      console.log(result)
       results.push(result)
       if (runs > 0) setTimeout(run, WAIT_BETWEEN_RUNS)
       else reporter.print(results)
@@ -27,7 +29,6 @@ const run = () => {
 }
 
 const start = () => {
-  console.log('start')
   lighthouse.throttle()
   run()
 }
