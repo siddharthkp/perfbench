@@ -45,7 +45,7 @@ if (process.env.CI) {
        check configuration options: https://siddharthkp/perfbench#event
     `
     )
-  } else {
+  } else if (event === settings.event) {
     setup().then(start).catch(error => console.log('Setup failed', error))
   }
 } else start()
