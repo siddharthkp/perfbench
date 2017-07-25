@@ -28,7 +28,6 @@ const run = () => {
 }
 
 const start = () => {
-  lighthouse.throttle()
   run()
 }
 

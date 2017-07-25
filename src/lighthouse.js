@@ -1,5 +1,4 @@
 const syncExec = require('sync-exec')
-const throttle = require('./throttle-lighthouse')
 
 const flags = { disableCpuThrottling: false }
 
@@ -22,4 +21,4 @@ const run = url =>
     else resolve(JSON.parse(output.stdout))
   })
 
-module.exports = { run, throttle }
+module.exports = { run }
