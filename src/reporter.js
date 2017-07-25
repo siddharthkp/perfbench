@@ -121,7 +121,15 @@ const print = results => {
 
   /* prepare details page url */
   const params = encodeURIComponent(
-    JSON.stringify({ averageValues, master, repo, branch, commit_message, sha })
+    JSON.stringify({
+      averageValues,
+      master,
+      thresholds,
+      repo,
+      branch,
+      commit_message,
+      sha
+    })
   )
   const url = `https://perfbench-store.now.sh/build?info=${params}`
 
