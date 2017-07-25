@@ -24,6 +24,7 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
+    "ci-env": "1.4.0",
     "cli-table2": "0.2.0",
     "colors": "1.1.2",
     "github-build": "1.1.1",

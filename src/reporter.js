@@ -3,12 +3,12 @@ const Table = require('cli-table2')
 const { white, yellow, green, red } = require('colors/safe')
 const statistics = require('statistics')
 const kebabcase = require('lodash.kebabcase')
+const { branch } = require('ci-env')
 
 const build = require('./build')
 const { units } = require('./properties')
 let { debug, fail, thresholds } = require('./settings')
 const store = require('./api')
-const { branch } = require('./travis')
 
 /* Table headers */
 let head = [white('Property'), white('Values'), white('Threshold')]

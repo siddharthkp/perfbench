@@ -1,7 +1,7 @@
 const axios = require('axios')
-const url = 'https://perfbench-store.now.sh/values'
+const { repo, sha } = require('ci-env')
 const token = require('./token')
-const { repo, sha } = require('./travis')
+const url = 'https://perfbench-store.now.sh/values'
 
 let enabled = false
 let values = {}
