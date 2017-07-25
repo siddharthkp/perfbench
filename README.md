@@ -90,6 +90,15 @@ thresholds:
   - page-ready: 1500
 ```
 
+##### event-type
+
+For travis users, if you would like to run perfbench in `pull_request` instead of `push`,
+set `event-type` in `.perf.yml`
+
+```yaml
+event-type: pull_request
+```
+
 &nbsp;
 
 #### like it?

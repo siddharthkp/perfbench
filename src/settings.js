@@ -18,7 +18,13 @@ const properties = ['runs', 'fail', 'url', 'debug', 'thresholds']
   3. cli params
 */
 
-const defaults = { runs: 3, fail: true, debug: false, thresholds: {} }
+const defaults = {
+  runs: 3,
+  fail: true,
+  debug: false,
+  thresholds: {},
+  event_type: 'push'
+}
 let fileSettings = {}
 let cliParams = {}
 
