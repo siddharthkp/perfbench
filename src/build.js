@@ -2,6 +2,7 @@ const Build = require('github-build')
 const startcase = require('lodash.startcase')
 const { thresholds } = require('./settings')
 const { units } = require('./properties')
+const token = require('./token')
 const { repo, sha, token, event_type } = require('./travis')
 const store = require('./api')
 
