@@ -16,7 +16,9 @@
     },
     "files": [
       "index.js",
-      "firebase.js"
+      "firebase.js",
+      "views",
+      "static"
     ]
   },
   "keywords": [],
