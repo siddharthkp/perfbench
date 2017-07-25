@@ -3,7 +3,7 @@ const startcase = require('lodash.startcase')
 const { thresholds } = require('./settings')
 const { units } = require('./properties')
 const token = require('./token')
-const { repo, sha, token, event_type } = require('./travis')
+const { repo, sha, event_type } = require('./travis')
 const store = require('./api')
 
 const label = 'perfbench'
