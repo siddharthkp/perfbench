@@ -17,7 +17,7 @@ let pass = () => {} // noop
 let fail = () => process.exit(1)
 let error = () => process.exit(1)
 
-if (token && event === 'pull_request') {
+if (token) {
   build.start()
 
   pass = (values, url) => {
@@ -85,7 +85,7 @@ if (token && event === 'pull_request') {
   }
 
   error = () => {
-    build.error('Tests errored out! Check pull request build for errors')
+    build.error('Tests errored out! Check build logs for errors')
   }
 }
 

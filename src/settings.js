@@ -2,7 +2,7 @@ const fs = require('fs')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const pkgDir = require('pkg-dir')
 const { resolve } = require('path')
-const { info, error } = require('prettycli')
+const { error } = require('prettycli')
 const yaml = require('js-yaml')
 const { optimalValues } = require('./properties')
 
@@ -18,7 +18,13 @@ const properties = ['runs', 'fail', 'url', 'debug', 'thresholds']
   3. cli params
 */
 
-const defaults = { runs: 3, fail: true, debug: false, thresholds: {} }
+const defaults = {
+  runs: 3,
+  fail: true,
+  debug: false,
+  thresholds: {},
+  event: 'push'
+}
 let fileSettings = {}
 let cliParams = {}
 
@@ -28,7 +34,6 @@ const configFileExists = fs.existsSync(configPath)
 
 /* file */
 if (configFileExists) {
-  info('Perfbench', 'Picking config from .perf.yml')
   try {
     fileSettings = yaml.safeLoad(fs.readFileSync(configPath))
   } catch ({ message }) {
