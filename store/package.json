@@ -12,10 +12,13 @@
   "now": {
     "env": {
       "apiKey": "@perfbench_apikey",
-      "databaseURL": "@perfbench_databaseurl"
+      "databaseURL": "@perfbench_databaseurl",
+      "githubId": "@perfbench_githubid",
+      "githubSecret": "@perfbench_githubsecret"
     },
     "files": [
       "index.js",
+      "github.js",
       "firebase.js",
       "views",
       "static"
