@@ -7,7 +7,7 @@
 
 &nbsp;
 
-[![Build Status](https://travis-ci.org/siddharthkp/reaqt.svg?branch=master)](https://travis-ci.org/siddharthkp/perfbench)
+[![Build Status](https://travis-ci.org/siddharthkp/perfbench.svg?branch=master)](https://travis-ci.org/siddharthkp/perfbench)
 
 &nbsp;
 
@@ -20,10 +20,14 @@ npm install perfbench --save
 
 #### usage
 
-Add to your `package.json`
+Build and run your application in your CI and then invoke perfbench
+
+`package.json`: 
 
 ```json
+"name": "my-awesome-app",
 "scripts": {
+  "pretest": "npm run build && pm2 start server.js",
   "test": "perfbench"
 }
 ```
